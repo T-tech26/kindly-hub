@@ -132,6 +132,7 @@ const PaymentMethod = () => {
     
             toast.success('Copied successfully');
         } catch (error) {
+            console.log(error);
             toast.error('Failed to copy text');
         }
     };

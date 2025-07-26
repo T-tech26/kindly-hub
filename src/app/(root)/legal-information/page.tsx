@@ -3,7 +3,7 @@
 import { useSearchParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
-const page = () => {
+const Page = () => {
 
     const params = useSearchParams();
     const router = useRouter();
@@ -122,12 +122,12 @@ const page = () => {
                         <p>By accessing and using the Kindly Hub website, you accept and agree to be bound by the terms and provision of this agreement.</p>
                         
                         <h4>2. Use License</h4>
-                        <p>Permission is granted to temporarily download one copy of the materials on Kindly Hub's website for personal, non-commercial transitory viewing only.</p>
+                        <p>Permission is granted to temporarily download one copy of the materials on Kindly Hub&apos;s website for personal, non-commercial transitory viewing only.</p>
                         
                         <h4>3. Donations</h4>
                         <p>All donations made through this website are:</p>
                         <ul>
-                            <li>Voluntary contributions to Kindly Hub's humanitarian mission</li>
+                            <li>Voluntary contributions to Kindly Hub&apos;s humanitarian mission</li>
                             <li>Tax-deductible to the extent allowed by law</li>
                             <li>Used for general humanitarian purposes unless specified otherwise</li>
                             <li>Final and non-refundable except in cases of error or fraud</li>
@@ -143,7 +143,7 @@ const page = () => {
                         </ul>
                         
                         <h4>5. Disclaimer</h4>
-                        <p>The materials on Kindly Hub's website are provided on an 'as is' basis. Kindly Hub makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+                        <p>The materials on Kindly Hub&apos;s website are provided on an &apos;as is&apos; basis. Kindly Hub makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
                         
                         <h4>6. Limitations</h4>
                         <p>In no event shall Kindly Hub or its suppliers be liable for any damages arising out of the use or inability to use the materials on Kindly Hub's website.</p>
@@ -159,7 +159,7 @@ const page = () => {
                         <p><strong>Last Updated:</strong> January 1, 2025</p>
                         
                         <h4>What Are Cookies</h4>
-                        <p>Cookies are small text files that are stored on your computer or mobile device when you visit our website. They help us provide you with a better experience by remembering your preferences and improving our website's functionality.</p>
+                        <p>Cookies are small text files that are stored on your computer or mobile device when you visit our website. They help us provide you with a better experience by remembering your preferences and improving our website&apos;s functionality.</p>
                         
                         <h4>Types of Cookies We Use</h4>
                         <ul>
@@ -214,4 +214,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

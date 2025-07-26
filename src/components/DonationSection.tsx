@@ -129,7 +129,7 @@ const DonationSection = () => {
                 <button type="submit" className="submit-btn" onClick={() => handleSubmit(data)}>Complete Donation</button>
                 
                 <p className="text-center mt-4 text-sm text-(--form-footer)">
-                    Your donation is secure and will be processed immediately. You'll receive a confirmation email with your tax-deductible receipt.
+                    Your donation is secure and will be processed immediately. You&apos;ll receive a confirmation email with your tax-deductible receipt.
                 </p>
             </form>
         </div>

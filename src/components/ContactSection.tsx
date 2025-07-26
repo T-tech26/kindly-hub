@@ -96,12 +96,12 @@ const ContactSection = () => {
         <div className="container">
             <div className="section-header">
                 <h2>Get in Touch</h2>
-                <p>We're here to help and answer any questions you might have about our humanitarian efforts. Your support makes a real difference in the lives of those who need it most.</p>
+                <p>We&apos;re here to help and answer any questions you might have about our humanitarian efforts. Your support makes a real difference in the lives of those who need it most.</p>
             </div>
             
             <div className="form-container">
                 <h2>Send Us a Message</h2>
-                <p className="subtitle">We'll respond within 24 hours</p>
+                <p className="subtitle">We&apos;ll respond within 24 hours</p>
                 
                 <form id="contactForm" onSubmit={(e) => e.preventDefault()}>
                     <div className="form-row md:gap-5">
@@ -181,7 +181,7 @@ const ContactSection = () => {
                     
                     <div className="checkbox-group">
                         <input type="checkbox" name="newsletter" checked={data.newsletter} onChange={handleChange} />
-                        <label htmlFor="newsletter">I would like to receive updates about Kindly Hub's humanitarian work and impact stories.</label>
+                        <label htmlFor="newsletter">I would like to receive updates about Kindly Hub&apos;s humanitarian work and impact stories.</label>
                     </div>
                     
                     <div className="checkbox-group">

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import React from 'react'
 
-const page = () => {
+const Page = () => {
 
     const params = useSearchParams();
 
@@ -21,7 +21,7 @@ const page = () => {
         <div className="container">
             {neededNews !== undefined && (
                 <Image
-                    src={neededNews?.image!}
+                    src={neededNews?.image}
                     width={1000}
                     height={1000}
                     alt='featured image'
@@ -39,4 +39,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
