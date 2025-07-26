@@ -146,7 +146,7 @@ const Page = () => {
                         <p>The materials on Kindly Hub&apos;s website are provided on an &apos;as is&apos; basis. Kindly Hub makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
                         
                         <h4>6. Limitations</h4>
-                        <p>In no event shall Kindly Hub or its suppliers be liable for any damages arising out of the use or inability to use the materials on Kindly Hub's website.</p>
+                        <p>In no event shall Kindly Hub or its suppliers be liable for any damages arising out of the use or inability to use the materials on Kindly Hub&apos;s website.</p>
                         
                         <h4>7. Contact Information</h4>
                         <p>Questions about the Terms of Use should be sent to us at legal@hopebridge.org.</p>
