@@ -4,7 +4,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 
-const Page = () => {
+const NewsPage = () => {
 
     const params = useSearchParams();
     const router = useRouter();
@@ -216,4 +216,4 @@ const Page = () => {
 }
 
 
-export default Page
+export default NewsPage

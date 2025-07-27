@@ -2,7 +2,7 @@
 
 export const dynamic = 'force-dynamic';
 
-import Page from '@/components/NewsPage';
+import NewsPage from '@/components/NewsPage';
 import React, { Suspense } from 'react'
 
 const Loading = () => {
@@ -57,7 +57,7 @@ const Loading = () => {
 const SuspenseWrapper = () => {
     return (
         <Suspense fallback={<Loading />}>
-            <Page />
+            <NewsPage />
         </Suspense>
     )
 }
