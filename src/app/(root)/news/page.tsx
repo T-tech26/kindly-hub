@@ -4,7 +4,7 @@ import { useDataContext } from '@/context/DataContext';
 import { getSmartDateDisplay } from '@/lib/utils';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import React from 'react'
+import React, { Suspense } from 'react'
 
 const Page = () => {
 
@@ -39,4 +39,22 @@ const Page = () => {
   )
 }
 
-export default Page
+
+const Loading = () => {
+    return (
+        <div className='w-full h-screen flex-1 flex justify-center items-center'>
+            <h1 className='text-3xl text-(--primary-blue)'>Loading...</h1>
+        </div>
+    )
+}
+
+
+const SuspenseWrapper = () => {
+    return (
+        <Suspense fallback={<Loading />}>
+            <Page />
+        </Suspense>
+    )
+}
+
+export default SuspenseWrapper
