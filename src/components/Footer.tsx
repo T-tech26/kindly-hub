@@ -25,7 +25,7 @@ const Footer = () => {
                     <h3>Socials/Contact</h3>
                     <ul>
                         <li>
-                            <Link href="https://threads.com" className="text-base">
+                            <Link href="https://threads.com/@kindly_hub" target='_blank' className="text-base">
                                 <Image 
                                     src="/threads.svg" 
                                     alt="Threads Logo" 
@@ -37,7 +37,7 @@ const Footer = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link href="https://instagram.com" className="text-base">
+                            <Link href="https://instagram.com/kindl_yhub/?utm_source=qr&r=nametag" target='_blank' className="text-base">
                                 <Image 
                                     src="/instagram.svg" 
                                     alt="Instagram Logo" 
@@ -49,7 +49,7 @@ const Footer = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link href="https://facebook.com" className="text-base">
+                            <Link href="https://facebook.com/share/1HxhdsxSvp/?mibextid=wwXIfr" target='_blank' className="text-base">
                                 <Image 
                                     src="/facebook.svg" 
                                     alt="Facebook Logo" 

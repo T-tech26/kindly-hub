@@ -4,10 +4,14 @@ import { ID, Query } from "node-appwrite";
 import { createAdminClient } from "./appwrite/config";
 import * as handlebars from 'handlebars'
 import { ContactFormData } from "@/components/ContactSection";
-import { createTransporter } from "./email/config";
 import { ContactEmail } from "./email/template";
 import { BillingDetailType, ScreenShotFormData } from "@/components/PaymentMethod";
 import { DonationFormData } from "@/components/DonationSection";
+import { Resend } from "resend";
+
+
+const resend = new Resend(process.env.RESEND_API_KEY!);
+
 
 export const getAllSuccessStories = async (): Promise<SuccessStoryType[]> => {
     try {
@@ -151,8 +155,6 @@ export const contactEmail = async (data: ContactFormData): Promise<ResponseStatu
     const contact = handlebars.compile(ContactEmail);
     try {
 
-        const transporter = await createTransporter();
-
         const subject = data.subject === 'donation' ? 'Donation Question'
             : data.subject === 'general' ? 'General Inquiry'
                 : data.subject === 'emergency' ? 'Emergency Assistance'
@@ -169,15 +171,21 @@ export const contactEmail = async (data: ContactFormData): Promise<ResponseStatu
             organization_email: `kindlyhub4@gmail.com`
         });
 
-        const mailOptions = {
-            from: data.email,
+        const { error } = await resend.emails.send({
+            from: 'Kindly Hub <team@email.kindlyhub.org>',
             to: 'kindlyhub4@gmail.com',
             subject: subject,
-            text: emailBody,
             html: emailBody
-        };
+        });
 
-        await transporter.sendMail(mailOptions);
+
+        if (error) {
+            console.log(error);
+            return {
+                status: 'error',
+                error: 'An unexpected error occured while sending your message to Kindly Hub.'
+            }
+        }
 
         return {
             status: 'success',
@@ -248,39 +256,3 @@ export const donationPayment = async (data: DonationFormData, file: ScreenShotFo
         };
     }
 }
-
-
-// export const donationEmail = async (data: ContactFormData) => {
-//     const contact = handlebars.compile(contactEmail);
-//     try {
-
-//         const subject = data.subject === 'donation' ? 'Donation Question'
-//             : data.subject === 'general' ? 'General Inquiry'
-//                 : data.subject === 'emergency' ? 'Emergency Assistance'
-//                     : data.subject === 'media' ? 'Media And Press'
-//                         : 'Other Issues';
-
-//         const emailBody = contact({
-//             subject: subject,
-//             username: `${data.firstName} ${data.lastName}`,
-//             useremail: data.email,
-//             phone: data.phone,
-//             message: data.message,
-//             organization_name: '',
-//             organization_email: `approved`
-//         });
-
-//         const mailOptions = {
-//             from: data.email,
-//             to: '',
-//             subject: subject,
-//             text: emailBody,
-//             html: emailBody
-//         };
-
-//         await transporter.sendMail(mailOptions);
-        
-//     } catch (error) {
-//         console.error('Error sending contact email', error);
-//     }
-// }

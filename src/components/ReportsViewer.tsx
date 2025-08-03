@@ -22,7 +22,7 @@ const ReportsViewer = () => {
                 />
 
                 <iframe
-                    src="/reports/HopeBridge_2024_Impact_Report.pdf"
+                    src="/reports/KindlyHub_2024_Impact_Report.pdf"
                     className='w-full h-screen'
                     title="Impact Report"
                 />
@@ -42,7 +42,7 @@ const ReportsViewer = () => {
             />
 
             <iframe
-                src="/reports/HopeBridge_Donation_Audit_Report_2022_2024.pdf"
+                src="/reports/KindlyHub_Donation_Audit_Report_2022_2024.pdf"
                 className='w-full h-screen'
                 title="Donation Audit Report"
             />

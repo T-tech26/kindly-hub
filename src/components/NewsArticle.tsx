@@ -21,7 +21,7 @@ const NewsArticle = ({
             src={img}
             width={1000}
             height={1000}
-            alt='new featured image'
+            alt='News featured image'
             className='size-full'
           />
         </div>

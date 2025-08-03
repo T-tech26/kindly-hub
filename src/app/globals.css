@@ -125,8 +125,8 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(16, 185, 129, 0.8)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e2e8f0" width="1200" height="600"/><text x="50%" y="50%" font-family="Arial" font-size="24" fill="%2364748b" text-anchor="middle" dy=".3em">Hero Background Image</text></svg>');
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.7), rgba(16, 185, 129, 0.6)), 
+                url('/hero_image.jpg');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
