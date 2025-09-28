@@ -231,16 +231,16 @@ const PaymentMethod = () => {
                             {billingDetail.type === 'crypto' && (
                                 <p className='text-sm'>
                                     {
-                                        billingDetail.addressType === 'tron' ? 'TRC20 Network'
-                                            : billingDetail.addressType === 'bsc' ? 'BEP20 Network'
-                                                : billingDetail.addressType === 'btc' ? 'BTC Network'
-                                                    : 'Ton Network' 
+                                        billingDetail.addressType === 'tron' ? 'TRC20 Address'
+                                            : billingDetail.addressType === 'bsc' ? 'BEP20 Address'
+                                                : billingDetail.addressType === 'btc' ? 'BTC Address'
+                                                    : 'TON Address' 
                                     }
                                 </p>
                             )}
 
                             <p className='text-sm px-2 py-2 rounded-lg border-2 border-zinc-400/30 w-full mt-2 flex justify-between items-center'>
-                                {billingDetail.address.length > 20 ? `${billingDetail.address.slice(0, 20)}...` : billingDetail.address}
+                                {billingDetail.address.length > 30 ? `${billingDetail.address.slice(0, 30)}...` : billingDetail.address}
 
                                 <Image
                                     src='/copy_icon.svg'
