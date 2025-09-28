@@ -69,8 +69,8 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
 
         const newsWithImageUrl = addNewsFeatureImage(data.documents, data.images);
 
-        if(newsWithImageUrl.length > 6) {
-            const oldNews = newsWithImageUrl.slice(6);
+        if(newsWithImageUrl.length > 3) {
+            const oldNews = newsWithImageUrl.slice(3);
 
             await deleteOldNews(oldNews);
         }

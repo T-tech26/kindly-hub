@@ -233,7 +233,8 @@ const PaymentMethod = () => {
                                     {
                                         billingDetail.addressType === 'tron' ? 'TRC20 Network'
                                             : billingDetail.addressType === 'bsc' ? 'BEP20 Network'
-                                                : 'Ton Network' 
+                                                : billingDetail.addressType === 'btc' ? 'BTC Network'
+                                                    : 'Ton Network' 
                                     }
                                 </p>
                             )}
