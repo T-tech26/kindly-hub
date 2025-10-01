@@ -46,7 +46,7 @@ export const deleteSuccessStories = async (data: SuccessStoryType[]) => {
         await database.deleteDocuments(
             process.env.APPWRITE_DATABASE_ID!,
             process.env.APPWRITE_SUCCESS_STORY_COLLECTION_ID!,
-            storiesIds
+            [Query.equal('$id', storiesIds)]
         );
 
     } catch (error) {
@@ -102,7 +102,7 @@ export const deleteOldNews = async (data: NewsReleaseType[]) => {
         await database.deleteDocuments(
             process.env.APPWRITE_DATABASE_ID!,
             process.env.APPWRITE_NEWS_COLLECTION_ID!,
-            newsIds
+            [Query.equal('$id', newsIds)]
         );
 
         for(const file of imagesIds) {
