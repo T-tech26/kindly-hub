@@ -1,5 +1,5 @@
-import { useDataContext } from '@/context/DataContext';
 import React, { useRef, useState } from 'react'
+import { toast } from 'sonner';
 import z from 'zod/v4'
 
 
@@ -17,8 +17,6 @@ export type DonationFormData = z.infer<typeof donationSchema>;
 const DonationSection = () => {
 
     const amountRef = useRef<HTMLInputElement>(null);
-
-    const { setDonation } = useDataContext();
 
     const [data, setData] = useState<DonationFormData>({
         frequency: 'one-time',
@@ -61,7 +59,7 @@ const DonationSection = () => {
 
         setFieldError({});
 
-        setDonation(result.data);
+        toast.info("Demo only: no payment was taken.");
 
         setData({
             frequency: 'one-time',

@@ -1,8 +1,8 @@
 "use client"; // required for useState and useRef in app dir
 
 import { DonationFormData } from "@/components/DonationSection";
-import { deleteOldNews, deleteSuccessStories, getAllNesRelease, getAllPaymentMethods, getAllSuccessStories } from "@/lib/action";
-import { addBillingLogo, addNewsFeatureImage } from "@/lib/utils";
+import { deleteOldNews, deleteSuccessStories, getAllNesRelease, getAllSuccessStories } from "@/lib/action";
+import { addNewsFeatureImage } from "@/lib/utils";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 type DataContextType = {
@@ -35,18 +35,6 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
         fullName: '',
         email: '',
 });
-
-  useEffect(() => {
-    const fetchData = async () => {
-        const data = await getAllPaymentMethods();
-
-        const editedData = addBillingLogo(data.documents, data.logos);
-
-        setBillingData(editedData);
-    };
-
-    fetchData();
-  }, []);
 
   useEffect(() => {
     const fetchData = async () => {

@@ -5,7 +5,6 @@ import { createAdminClient } from "./appwrite/config";
 import * as handlebars from 'handlebars'
 import { ContactFormData } from "@/components/ContactSection";
 import { ContactEmail } from "./email/template";
-import { BillingDetailType, ScreenShotFormData } from "@/components/PaymentMethod";
 import { DonationFormData } from "@/components/DonationSection";
 import { Resend } from "resend";
 
@@ -203,56 +202,56 @@ export const contactEmail = async (data: ContactFormData): Promise<ResponseStatu
 }
 
 
-export const donationPayment = async (data: DonationFormData, file: ScreenShotFormData, billingMethod: BillingDetailType): Promise<ResponseStatus> => {
-    try {
-        const { database, storage } = await createAdminClient();
+export const donationPayment = async () => {
+    // try {
+    //     const { database, storage } = await createAdminClient();
 
-        const imageName = ID.unique();
+    //     const imageName = ID.unique();
 
-        const donationData = {
-            fullName: data.fullName,
-            email: data.email,
-            amount: data.amount,
-            frequency: data.frequency,
-            screenShot: `${imageName}_${file.image.name.replace(' ', '_')}`,
-            paymentMethod: billingMethod.type,
-            addressType: billingMethod.addressType,
-            address: billingMethod.address,
-            billingDataID: billingMethod.billingDataID
-        };
+    //     const donationData = {
+    //         fullName: data.fullName,
+    //         email: data.email,
+    //         amount: data.amount,
+    //         frequency: data.frequency,
+    //         screenShot: `${imageName}_${file.image.name.replace(' ', '_')}`,
+    //         paymentMethod: billingMethod.type,
+    //         addressType: billingMethod.addressType,
+    //         address: billingMethod.address,
+    //         billingDataID: billingMethod.billingDataID
+    //     };
 
-        const donationDoc = await database.createDocument(
-            process.env.APPWRITE_DATABASE_ID!,
-            process.env.APPWRITE_DONATIONS_COLLECTION_ID!,
-            ID.unique(),
-            donationData
-        );
+    //     const donationDoc = await database.createDocument(
+    //         process.env.APPWRITE_DATABASE_ID!,
+    //         process.env.APPWRITE_DONATIONS_COLLECTION_ID!,
+    //         ID.unique(),
+    //         donationData
+    //     );
 
-        if(!donationDoc) {
-            return {
-                status: 'error',
-                error: 'Donation request failed, try again.'
-            }
-        };
+    //     if(!donationDoc) {
+    //         return {
+    //             status: 'error',
+    //             error: 'Donation request failed, try again.'
+    //         }
+    //     };
 
-        const editedFileName = new File([file.image], `${imageName}_${file.image.name.replace(' ', '_')}`, { type: file.image.type });
+    //     const editedFileName = new File([file.image], `${imageName}_${file.image.name.replace(' ', '_')}`, { type: file.image.type });
 
-        await storage.createFile(
-            process.env.APPWRITE_IMAGE_BUCKET_ID!,
-            ID.unique(),
-            editedFileName
-        );
+    //     await storage.createFile(
+    //         process.env.APPWRITE_IMAGE_BUCKET_ID!,
+    //         ID.unique(),
+    //         editedFileName
+    //     );
         
-        return {
-            status: 'success',
-            message: 'Donation request submitted successfully.'
-        };
-    } catch (error) {
-        console.error('Error uploading donation payment details:', error);
+    //     return {
+    //         status: 'success',
+    //         message: 'Donation request submitted successfully.'
+    //     };
+    // } catch (error) {
+    //     console.error('Error uploading donation payment details:', error);
 
-        return {
-            status: 'error',
-            error: 'An unexpected error occured while submitting your donation request. Please try again.'
-        };
-    }
+    //     return {
+    //         status: 'error',
+    //         error: 'An unexpected error occured while submitting your donation request. Please try again.'
+    //     };
+    // }
 }

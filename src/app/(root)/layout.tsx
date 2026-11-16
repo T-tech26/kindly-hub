@@ -2,7 +2,6 @@ import React from "react";
 import Footer from "@/components/Footer";
 import TopNav from "@/components/TopNav";
 import MobileNav from "@/components/MobileNav";
-import PaymentMethod from "@/components/PaymentMethod";
 
 export default function RootLayout({
   children,
@@ -17,7 +16,6 @@ export default function RootLayout({
             {children}
           <MobileNav />
         <Footer />
-        <PaymentMethod />
     </section>
   );
 }
