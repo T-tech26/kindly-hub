@@ -10,7 +10,7 @@ const MobileNav = () => {
     const { toggleNav, setToggleNav } = useLayoutContext();
 
   return (
-    <nav className={`w-full h-screen fixed top-0 left-[110%] bg-white ${toggleNav}`}>
+    <nav className={`w-full h-screen fixed top-0 left-[110%] bg-white z-9999 ${toggleNav}`}>
         <div className='flex items-center justify-between px-5 h-16 w-full'>
             <Link href={"/"} className="logo text-nowrap">Kindly Hub</Link>
 
@@ -44,7 +44,7 @@ const MobileNav = () => {
                         About
                     </Link>
                 </li>
-                 <li>
+                <li>
                     <Link 
                         href="/#how-it-works" 
                         className="text-base hover:text-(--primary-blue) transition-all cursor-pointer"
@@ -53,7 +53,7 @@ const MobileNav = () => {
                         How it works
                     </Link>
                 </li>
-                 <li>
+                <li>
                     <Link 
                         href="/#stories" 
                         className="text-base hover:text-(--primary-blue) transition-all cursor-pointer"
@@ -62,16 +62,7 @@ const MobileNav = () => {
                         Stories
                     </Link>
                 </li>
-                 <li>
-                    <Link 
-                        href="/#transparency" 
-                        className="text-base hover:text-(--primary-blue) transition-all cursor-pointer"
-                        onClick={() => setToggleNav('hide-mobile-nav')}
-                    >
-                        Transparency
-                    </Link>
-                </li>
-                 <li>
+                <li>
                     <Link 
                         href="/#news" 
                         className="text-base hover:text-(--primary-blue) transition-all cursor-pointer"
@@ -80,7 +71,7 @@ const MobileNav = () => {
                         News
                     </Link>
                 </li>
-                 <li>
+                <li>
                     <Link 
                         href="/#contact" 
                         className="text-base hover:text-(--primary-blue) transition-all cursor-pointer"

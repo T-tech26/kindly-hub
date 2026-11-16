@@ -7,8 +7,8 @@ const Footer = () => {
   return (
     <footer className="footer">
         <div className="container">
-            <div className="footer-content">
-                <div className="footer-section">
+            <div className="footer-content flex flex-col sm:flex-row justify-between">
+                <div className="footer-section max-w-xs">
                     <h3>About Kindly Hub</h3>
                     <p>A demo donation site built as a portfolio project with Next.js, TypeScript and Appwrite. The organisation and its content are fictional.</p>
                 </div>
@@ -17,37 +17,7 @@ const Footer = () => {
                     <ul>
                         <li><Link href="/#about" className="text-base">About</Link></li>
                         <li><Link href="/#how-it-works" className="text-base">How it works</Link></li>
-                        <li><Link href="/#transparency" className="text-base">Financial Reports</Link></li>
                         <li><Link href="/#news" className="text-base">Recent News</Link></li>
-                    </ul>
-                </div>
-                <div className="footer-section">
-                    <h3>Socials/Contact</h3>
-                    <ul>
-                        <li>
-                            <Link href="/" className="text-base">
-                                <Image 
-                                    src="/instagram.svg" 
-                                    alt="Instagram Logo" 
-                                    width={30} 
-                                    height={30} 
-                                    className="inline-block mr-2" 
-                                />
-                                Instagram
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/" className="text-base">
-                                <Image 
-                                    src="/facebook.svg" 
-                                    alt="Facebook Logo" 
-                                    width={30} 
-                                    height={30} 
-                                    className="inline-block mr-2" 
-                                />
-                                Facebook
-                            </Link>
-                        </li>
                         <li><Link href="/#contact" className="text-base">Contact</Link></li>
                     </ul>
                 </div>

@@ -5,8 +5,6 @@ import React, { createContext, useContext, useState } from "react";
 type LayoutContextType = {
   setToggleNav: React.Dispatch<React.SetStateAction<string>>;
   toggleNav: string;
-  reports: string;
-  setReports: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const LayoutContext = createContext<LayoutContextType | null>(null);
@@ -20,15 +18,12 @@ export const useLayoutContext = () => {
 export const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
 
   const [toggleNav, setToggleNav] = useState('');
-  const [reports, setReports] = useState('');
 
   return (
     <LayoutContext.Provider
       value={{
         toggleNav,
         setToggleNav,
-        reports,
-        setReports
       }}
     >
       {children}
