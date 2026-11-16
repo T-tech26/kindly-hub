@@ -37,7 +37,8 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 1rem 0;
+    padding: 0 0 1rem 0;
+    z-index: 100;
 }
 
 .nav-content {
@@ -50,7 +51,7 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--primary-blue);
     text-decoration: none;
@@ -74,7 +75,7 @@ body {
 .donate-btn {
     background: var(--primary-blue);
     color: var(--white);
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     border-radius: 0.5rem;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -91,7 +92,7 @@ body {
 .mobile-menu {
     background: none;
     border: none;
-    font-size: 2rem;
+    font-size: 1.25rem;
     cursor: pointer;
 }
 
@@ -129,12 +130,7 @@ body {
                 url('/hero_image.jpg');
     background-size: cover;
     background-position: center;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    text-align: center;
     color: var(--white);
-    padding-top: 5rem;
 }
 
 .hero-content {
@@ -146,13 +142,11 @@ body {
 .hero h1 {
     font-size: 3.5rem;
     font-weight: 800;
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
+    line-height: 1;
 }
 
 .hero p {
     font-size: 1.25rem;
-    margin-bottom: 2rem;
     opacity: 0.95;
 }
 
@@ -166,11 +160,11 @@ body {
 .cta-primary {
     background: var(--warm-orange);
     color: var(--white);
-    padding: .8rem 1.5rem;
+    padding: .5rem 1.5rem;
     border-radius: 0.5rem;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-lg);
     cursor: pointer;
@@ -184,12 +178,12 @@ body {
 .cta-secondary {
     background: rgba(255, 255, 255, 0.2);
     color: var(--white);
-    padding: .8rem 1.5rem;
+    padding: .5rem 1.5rem;
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 0.5rem;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     cursor: pointer;

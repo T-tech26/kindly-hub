@@ -2,7 +2,7 @@
 
 import { useLayoutContext } from '@/context/LayoutContext';
 import Link from 'next/link';
-import React from 'react'
+import DemoBanner from './DemoBanner';
 
 const TopNav = () => {
   
@@ -10,6 +10,7 @@ const TopNav = () => {
 
   return (
     <nav className="navbar max-w-[1920px]">
+        <DemoBanner />
         <div className="nav-content gap-1.5">
           <Link href={"/"} className="logo text-nowrap">Kindly Hub</Link>
 
@@ -74,7 +75,7 @@ const TopNav = () => {
 
           <div className="flex items-center gap-5 pr-4">
             <button 
-                className="donate-btn text-sm font-medium"
+                className="donate-btn text-xs font-medium"
             >
                 <Link 
                     href="/#donation" 
