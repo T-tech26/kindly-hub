@@ -5,7 +5,7 @@ import z from 'zod/v4'
 
 const donationSchema = z.object({
     frequency: z.enum(['one-time', 'monthly']),
-    amount: z.string().min(1, "Amount must be at least $25").trim(),
+    amount: z.string().trim().refine(v => /^\d+(\.\d{1,2})?$/.test(v) && Number(v) >= 25, "Enter an amount of at least $25"),
     fullName: z.string().min(1, "Full name is required").trim(),
     email: z.email("Invalid email address").trim(),
 });
@@ -75,7 +75,7 @@ const DonationSection = () => {
         <div className="container">
             <div className="section-header">
                 <h2>Make a Donation</h2>
-                <p>Your support directly impacts lives. Choose an amount and donation frequency that works for you.</p>
+                <p>Choose an amount and a donation frequency to try the donation flow. This is a demo: no payment is taken.</p>
             </div>
 
             <form className='donation-form' onSubmit={e => e.preventDefault()}>
@@ -102,32 +102,34 @@ const DonationSection = () => {
                 <div className="form-group">
                     <label htmlFor="amount">Donation Amount ($)</label>
                     <input 
+                        id='amount'
                         ref={amountRef}
                         type="text" 
                         name="amount" 
                         value={data.amount} 
                         placeholder="Enter amount" 
                         onChange={handleChange}
+                        inputMode='decimal'
                     />
                     {fieldError.amount && <p className='text-xs text-red-300'>{fieldError.amount}</p>}
                 </div>
                 
                 <div className="form-group">
-                    <label htmlFor="name">Full Name</label>
-                    <input type="text" name="fullName" value={data.fullName} onChange={handleChange} />
+                    <label htmlFor="fullName">Full Name</label>
+                    <input id='fullName' type="text" name="fullName" value={data.fullName} onChange={handleChange} />
                     {fieldError.fullName && <p className='text-xs text-red-300'>{fieldError.fullName}</p>}
                 </div>
                 
                 <div className="form-group">
                     <label htmlFor="email">Email Address</label>
-                    <input type="email" name="email" value={data.email} onChange={handleChange} />
+                    <input id='email' type="email" name="email" value={data.email} onChange={handleChange} />
                     {fieldError.email && <p className='text-xs text-red-300'>{fieldError.email}</p>}
                 </div>
                 
-                <button type="submit" className="submit-btn" onClick={() => handleSubmit(data)}>Complete Donation</button>
+                <button type="submit" className="submit-btn" onClick={() => handleSubmit(data)}>Submit demo donation</button>
                 
                 <p className="text-center mt-4 text-sm text-(--form-footer)">
-                    Your donation is secure and will be processed immediately. You&apos;ll receive a confirmation email with your tax-deductible receipt.
+                    Demo only: no payment is taken and no receipt is sent.
                 </p>
             </form>
         </div>

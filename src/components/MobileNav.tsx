@@ -25,7 +25,7 @@ const MobileNav = () => {
         </div>
 
         <ul className="h-full flex flex-col items-center justify-around">
-            <div className='flex flex-col justify-center gap-6'>
+            <div className='flex flex-col justify-center gap-6 text-center'>
                 <li>
                     <Link 
                         href="/#home" 
