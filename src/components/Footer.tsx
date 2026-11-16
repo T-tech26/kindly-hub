@@ -10,7 +10,7 @@ const Footer = () => {
             <div className="footer-content">
                 <div className="footer-section">
                     <h3>About Kindly Hub</h3>
-                    <p>A humanitarian organization dedicated to supporting war-affected civilians worldwide, providing essential aid regardless of nationality or political affiliation.</p>
+                    <p>A demo donation site built as a portfolio project with Next.js, TypeScript and Appwrite. The organisation and its content are fictional.</p>
                 </div>
                 <div className="footer-section">
                     <h3>Quick Links</h3>
@@ -25,19 +25,7 @@ const Footer = () => {
                     <h3>Socials/Contact</h3>
                     <ul>
                         <li>
-                            <Link href="https://threads.com/@kindly_hub" target='_blank' className="text-base">
-                                <Image 
-                                    src="/threads.svg" 
-                                    alt="Threads Logo" 
-                                    width={30} 
-                                    height={30} 
-                                    className="inline-block mr-2" 
-                                />
-                                Threads
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="https://instagram.com/kindl_yhub/?utm_source=qr&r=nametag" target='_blank' className="text-base">
+                            <Link href="/" className="text-base">
                                 <Image 
                                     src="/instagram.svg" 
                                     alt="Instagram Logo" 
@@ -49,7 +37,7 @@ const Footer = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link href="https://facebook.com/share/1HxhdsxSvp/?mibextid=wwXIfr" target='_blank' className="text-base">
+                            <Link href="/" className="text-base">
                                 <Image 
                                     src="/facebook.svg" 
                                     alt="Facebook Logo" 
@@ -74,7 +62,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="footer-bottom">
-                <p>&copy; 2025 Kindly Hub. All rights reserved. | Registered 501(c)(3) Organization</p>
+                <p>&copy; 2026 Kindly Hub. Demo project for portfolio purposes. Not a registered organisation.</p>
             </div>
         </div>
     </footer>
