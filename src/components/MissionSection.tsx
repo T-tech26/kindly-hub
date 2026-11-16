@@ -7,29 +7,29 @@ const MissionSection = () => {
     <section id='about' className='mission'>
       <div className="container">
           <div className="section-header">
-              <h2>Our Mission</h2>
-              <p>We provide humanitarian aid to civilians affected by conflict, offering support without discrimination based on nationality, religion, or political affiliation.</p>
+              <h2>About This Project</h2>
+              <p>What this demo includes and how it's built.</p>
           </div>
           <div className="impact-grid">
               <div className="impact-card">
                   <div className="impact-icon">🏠</div>
-                  <h3>Emergency Shelter</h3>
-                  <p>Providing safe, temporary housing for displaced families seeking refuge from conflict zones.</p>
+                  <h3>Donation form</h3>
+                  <p>Amount, frequency and donor details are validated with Zod before submitting.</p>
               </div>
               <div className="impact-card">
                   <div className="impact-icon">🍽️</div>
-                  <h3>Food & Water</h3>
-                  <p>Delivering essential nutrition and clean water to communities facing food insecurity.</p>
+                  <h3>Contact form</h3>
+                  <p>Sends a real email through Resend using an handlebars template.</p>
               </div>
               <div className="impact-card">
                   <div className="impact-icon">⚕️</div>
-                  <h3>Medical Care</h3>
-                  <p>Offering life-saving medical treatment and healthcare services to those in need.</p>
+                  <h3>Managed content</h3>
+                  <p>News and stories are stored in Appwrite and managed from a separate admin dashboard.</p>
               </div>
               <div className="impact-card">
                   <div className="impact-icon">💪</div>
-                  <h3>Emotional Support</h3>
-                  <p>Providing counseling and psychological support to help heal trauma and rebuild lives.</p>
+                  <h3>Responsive layout</h3>
+                  <p>Works from phone to desktop, with a slide-in mobile menu.</p>
               </div>
           </div>
         </div>
