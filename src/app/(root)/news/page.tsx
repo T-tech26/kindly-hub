@@ -4,7 +4,7 @@ import { useDataContext } from '@/context/DataContext';
 import { getSmartDateDisplay } from '@/lib/utils';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 
 const Page = () => {
 

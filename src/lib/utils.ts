@@ -1,25 +1,5 @@
 import { format, formatDistanceToNowStrict, differenceInHours, parseISO } from 'date-fns';
 
-export const addBillingLogo = (
-    documents: PaymentMethodType[], 
-    logos: FileType[]
-) => {
-
-    return documents.map(method => {
-        const matchingFile = logos.find(file => file.name === method.logo);
-
-        const imageUrl = matchingFile
-            ? `${process.env.NEXT_PUBLIC_APPWRITE_PUBLIC_URL}/storage/buckets/${matchingFile.bucketId}/files/${matchingFile.$id}/view?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID}&mode=admin`
-            : method.logo; // fallback if no match
-
-        return {
-            ...method,
-            logo: imageUrl,
-            fileid: matchingFile?.$id
-        };
-    });
-}
-
 
 export const addNewsFeatureImage = (
     documents: NewsReleaseType[],

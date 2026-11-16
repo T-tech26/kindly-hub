@@ -81,11 +81,11 @@ const DonationSection = () => {
             <form className='donation-form' onSubmit={e => e.preventDefault()}>
                 <div className="donation-type">
                     <label>
-                        <input type="radio" name="frequency" onChange={handleChange} value="one-time" checked />
+                        <input type="radio" name="frequency" onChange={handleChange} value="one-time" checked={data.frequency === 'one-time'} />
                         One-time donation
                     </label>
                     <label>
-                        <input type="radio" name="frequency" onChange={handleChange} value="monthly" />
+                        <input type="radio" name="frequency" onChange={handleChange} value="monthly" checked={data.frequency === 'monthly'} />
                         Monthly donation
                     </label>
                 </div>

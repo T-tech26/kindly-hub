@@ -4,7 +4,6 @@ type ResponseStatus = {
 } | {
     status: 'success';
     message: string;
-    data?: BillingReturnType
 }
 
 type SuccessStoryType = {
@@ -37,21 +36,6 @@ type NewsReleaseType = {
     $collectionId: string;
 }
 
-type PaymentMethodType = {
-    addressType: string;
-    address: string;
-    type: string;
-    logo: string;
-    $id: string;
-    fileid?: string;
-    $permissions: string[];
-    $createdAt: string;
-    $updatedAt: string;
-    $sequence: string;
-    $databaseId: string;
-    $collectionId: string;
-}
-
 type FileType = {
   $id: string;
   bucketId: string;
@@ -64,11 +48,6 @@ type FileType = {
   sizeOriginal: number;
   chunksTotal: number;
   chunksUploaded: number;
-}
-
-type BillingReturnType = {
-    documents: PaymentMethodType[];
-    logos: FileType[];
 }
 
 type NewsReturnType = {
