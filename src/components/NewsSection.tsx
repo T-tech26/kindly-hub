@@ -1,4 +1,3 @@
-import React from 'react'
 import NewsArticle from './NewsArticle'
 import { useDataContext } from '@/context/DataContext'
 import { getSmartDateDisplay } from '@/lib/utils'

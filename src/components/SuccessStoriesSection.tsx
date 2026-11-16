@@ -10,8 +10,8 @@ const SuccessStoriesSection = () => {
     <section id='stories' className="py-20">
         <div className="container">
             <div className="section-header">
-                <h2>Stories of Hope</h2>
-                <p>Real impact from real people whose lives have been touched by your generosity</p>
+                <h2>Sample Feedback</h2>
+                <p>Fictional sample entries that show how stories are displayed. Not real people.</p>
             </div>
             <div className="story-grid">
                 {successStories.map((story) => (

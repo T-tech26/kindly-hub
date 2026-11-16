@@ -55,3 +55,7 @@ type NewsReturnType = {
     images: FileType[];
 }
 
+type NewsItem = Pick<NewsReleaseType, '$id' | 'title' | 'summary' | 'content' | 'image' | 'date'>
+
+type StoryItem = Pick<SuccessStoryType, '$id' | 'name' | 'description' | 'testimonial'>
+
