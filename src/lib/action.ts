@@ -72,8 +72,7 @@ export const contactEmail = async (data: ContactFormData): Promise<ResponseStatu
 
         const subject = data.subject === 'donation' ? 'Donation Question'
             : data.subject === 'general' ? 'General Inquiry'
-                : data.subject === 'emergency' ? 'Emergency Assistance'
-                    : data.subject === 'media' ? 'Media And Press'
+                : data.subject === 'media' ? 'Media And Press'
                         : 'Other Issues';
 
         const emailBody = contact({

@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kindly Hub | Donate for a Better World",
-  description: "Kindly connects donors with impactful causes. Donate securely and help empower communities worldwide through your generosity.",
+  title: "A demo donation platform",
+  description: "This is a demo donation site for my portfolio project.",
   icons: {
     icon: '/icon.png',
     shortcut: '/icon.png'

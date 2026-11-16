@@ -8,9 +8,8 @@ const ContactSchema = z.object({
   lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().min(1, "Phone number is required"),
-  subject: z.enum(['general', 'donation', 'media', 'emergency', 'other']),
+  subject: z.enum(['general', 'donation', 'media', 'other']),
   message: z.string().min(1, "Message is required"),
-  newsletter: z.boolean(),
   privacy: z.boolean(),
 });
 
@@ -25,7 +24,6 @@ const ContactSection = () => {
         phone: '',
         subject: 'general',
         message: '',
-        newsletter: false,
         privacy: false
     });
     const [loading, setLoading] = useState(false);
@@ -36,7 +34,7 @@ const ContactSection = () => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
 
-        if(name === 'newsletter' || name === 'privacy') {
+        if(name === 'privacy') {
             const input = e.target as HTMLInputElement;
             setData(prev => ({ ...prev, [name]: input.checked }));
             return;
@@ -77,7 +75,6 @@ const ContactSection = () => {
                 phone: '',
                 subject: 'general',
                 message: '',
-                newsletter: false,
                 privacy: false
             });
 
@@ -96,12 +93,11 @@ const ContactSection = () => {
         <div className="container">
             <div className="section-header">
                 <h2>Get in Touch</h2>
-                <p>We&apos;re here to help and answer any questions you might have about our humanitarian efforts. Your support makes a real difference in the lives of those who need it most.</p>
+                <p>Questions about this project? Send a message and it goes to the project inbox.</p>
             </div>
             
             <div className="form-container">
                 <h2>Send Us a Message</h2>
-                <p className="subtitle">We&apos;ll respond within 24 hours</p>
                 
                 <form id="contactForm" onSubmit={(e) => e.preventDefault()}>
                     <div className="form-row md:gap-5">
@@ -162,7 +158,6 @@ const ContactSection = () => {
                             <option value="general">General Inquiry</option>
                             <option value="donation">Donation Questions</option>
                             <option value="media">Media & Press</option>
-                            <option value="emergency">Emergency Assistance</option>
                             <option value="other">Other</option>
                         </select>
                         {fieldError.subject && <p className='text-xs text-red-300'>{fieldError.subject}</p>}
@@ -177,11 +172,6 @@ const ContactSection = () => {
                             onChange={handleChange}
                         ></textarea>
                         {fieldError.message && <p className='text-xs text-red-300'>{fieldError.message}</p>}
-                    </div>
-                    
-                    <div className="checkbox-group">
-                        <input type="checkbox" name="newsletter" checked={data.newsletter} onChange={handleChange} />
-                        <label htmlFor="newsletter">I would like to receive updates about Kindly Hub&apos;s humanitarian work and impact stories.</label>
                     </div>
                     
                     <div className="checkbox-group">

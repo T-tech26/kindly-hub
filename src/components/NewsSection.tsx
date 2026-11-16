@@ -12,7 +12,7 @@ const NewsSection = () => {
         <div className="container">
             <div className="section-header">
                 <h2>News & Media</h2>
-                <p>Stay updated on our humanitarian efforts and the latest developments in our mission</p>
+                <p>Updates from the project</p>
             </div>
             <div className="news-grid">
                 {news.length > 0 && news.map(feed => (
