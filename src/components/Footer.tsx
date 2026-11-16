@@ -23,12 +23,7 @@ const Footer = () => {
                 </div>
                 <div className="footer-section">
                     <h3>Legal</h3>
-                    <ul>
-                        <li><Link href="/legal-information?document=privacy-policy" className="text-base">Privacy Policy</Link></li>
-                        <li><Link href="/legal-information?document=refund-policy" className="text-base">Refund Policy</Link></li>
-                        <li><Link href="/legal-information?document=terms-of-use" className="text-base">Terms of Use</Link></li>
-                        <li><Link href="/legal-information?document=cookie-policy" className="text-base">Cookie Policy</Link></li>
-                    </ul>
+                    <Link href="/legal-information" className="text-base">Demo Notice</Link>
                 </div>
             </div>
             <div className="footer-bottom">

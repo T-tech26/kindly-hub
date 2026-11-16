@@ -1,4 +1,5 @@
 import { contactEmail } from '@/lib/action';
+import Link from 'next/link';
 import React, { useState } from 'react'
 import { toast } from 'sonner';
 import z from 'zod';
@@ -10,7 +11,7 @@ const ContactSchema = z.object({
   phone: z.string().min(1, "Phone number is required"),
   subject: z.enum(['general', 'donation', 'media', 'other']),
   message: z.string().min(1, "Message is required"),
-  privacy: z.boolean(),
+  privacy: z.boolean().refine(v => v === true, "Please confirm to continue")
 });
 
 export type ContactFormData = z.infer<typeof ContactSchema>;
@@ -136,7 +137,7 @@ const ContactSection = () => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="phone">Phone Number</label>
+                            <label htmlFor="phone">Phone Number <span className="required">*</span></label>
                             <input 
                                 type="tel"
                                 name="phone" 
@@ -176,7 +177,8 @@ const ContactSection = () => {
                     
                     <div className="checkbox-group">
                         <input type="checkbox" name="privacy" checked={data.privacy} onChange={handleChange} />
-                        <label htmlFor="privacy">I agree to the <a href="#" className="color: #4285f4;">Privacy Policy</a> and <a href="#" className="color: #4285f4;">Terms of Service</a> <span className="required">*</span></label>
+                        <label htmlFor="privacy">I understand this is a demo and my message will be emailed to the project inbox. <Link href="/legal-information" className="text-[#4285f4]">Privacy Policy</Link> and <Link href="#" className="text-[#4285f4]">Terms of Service</Link> <span className="required">*</span></label>
+                        {fieldError.privacy && <p className='text-xs text-red-300'>{fieldError.privacy}</p>}
                     </div>
                     
                     <button 
