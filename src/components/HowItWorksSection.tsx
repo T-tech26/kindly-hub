@@ -7,25 +7,25 @@ const HowItWorksSection = () => {
     <section id='how-it-works' className="how-it-helps">
         <div className="container">
             <div className="section-header">
-                <h2>How Your Donation Helps</h2>
-                <p>Every contribution makes a direct impact on the lives of those affected by conflict</p>
+                <h2>How the Demo Works</h2>
+                <p>The steps a donor would follow on this site. Nothing is charged.</p>
             </div>
             <div className="help-items">
                 <div className="help-item">
-                    <div className="help-item-icon">$25</div>
-                    <p>Provides emergency food supplies for a family for one week</p>
+                    <div className="help-item-icon">1</div>
+                    <p>Choose a preset amount or enter your own.</p>
                 </div>
                 <div className="help-item">
-                    <div className="help-item-icon">$50</div>
-                    <p>Supplies clean water and sanitation for 10 people for one month</p>
+                    <div className="help-item-icon">2</div>
+                    <p>Enter your name and email. Every field is validated before it submits.</p>
                 </div>
                 <div className="help-item">
-                    <div className="help-item-icon">$100</div>
-                    <p>Covers medical treatment and supplies for emergency care</p>
+                    <div className="help-item-icon">3</div>
+                    <p>Submit to see a confirmation. No payment is taken.</p>
                 </div>
                 <div className="help-item">
-                    <div className="help-item-icon">$250</div>
-                    <p>Provides temporary shelter materials for a displaced family</p>
+                    <div className="help-item-icon">4</div>
+                    <p>Use the contact form to send a real message to the project inbox.</p>
                 </div>
             </div>
         </div>
