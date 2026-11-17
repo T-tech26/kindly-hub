@@ -1,18 +1,9 @@
 import { contactEmail } from '@/lib/action';
+import { ContactSchema } from '@/lib/schemas';
 import Link from 'next/link';
 import React, { useState } from 'react'
 import { toast } from 'sonner';
 import z from 'zod';
-
-const ContactSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(1, "Phone number is required"),
-  subject: z.enum(['general', 'donation', 'media', 'other']),
-  message: z.string().min(1, "Message is required"),
-  privacy: z.boolean().refine(v => v === true, "Please confirm to continue")
-});
 
 export type ContactFormData = z.infer<typeof ContactSchema>;
 

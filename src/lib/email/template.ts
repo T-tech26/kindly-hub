@@ -13,17 +13,17 @@ export const ContactEmail = `<!DOCTYPE html>
 </head>
 <body>
   <div class="container">
-    <h1>New Contact Form Message</h1>
+    <h1>New Demo Contact Form Message</h1>
 
     <p><strong>Name:</strong> {{ username }}</p>
     <p><strong>Email:</strong> {{ useremail }}</p>
-    <p><strong>Phone:</strong> {{ phone }}</p>
+    {{#if phone}}<p><strong>Phone:</strong> {{ phone }}</p>{{/if}}
     <p><strong>Subject:</strong> {{ subject }}</p>
     <p><strong>Message:</strong></p>
-    <p>{{ message }}</p>
+    <p style="white-space: pre-wrap">{{ message }}</p>
 
     <div class="footer">
-      {{ organization_name }} | {{ organization_email }}
+      Sent from the Kindly Hub demo contact form.
     </div>
   </div>
 </body>

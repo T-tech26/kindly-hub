@@ -7,9 +7,10 @@ import { ContactFormData } from "@/components/ContactSection";
 import { ContactEmail } from "./email/template";
 import { Resend } from "resend";
 import { parseStringify } from "./utils";
+import { ContactSchema } from "./schemas";
 
 
-// const resend = new Resend(process.env.RESEND_API_KEY!);
+const resend = new Resend(process.env.RESEND_API_KEY!);
 
 
 export const getAllSuccessStories = async (): Promise<SuccessStoryType[]> => {
@@ -65,36 +66,46 @@ export const contactEmail = async (data: ContactFormData): Promise<ResponseStatu
     const contact = handlebars.compile(ContactEmail);
     try {
 
-        const subject = data.subject === 'donation' ? 'Donation Question'
-            : data.subject === 'general' ? 'General Inquiry'
-                : data.subject === 'media' ? 'Media And Press'
+        const parsed = ContactSchema.safeParse(data);
+
+        if (!parsed.success) {
+            return {
+                status: 'error',
+                error: 'Invalid contact data provided.'
+            };
+        }
+
+        const subject = parsed.data.subject === 'donation' ? 'Donation Question'
+            : parsed.data.subject === 'general' ? 'General Inquiry'
+                : parsed.data.subject === 'media' ? 'Media And Press'
                         : 'Other Issues';
 
+        const emailSubject = `[Kindly Hub demo] ${subject}`;
+
         const emailBody = contact({
-            subject: subject,
-            username: `${data.firstName} ${data.lastName}`,
-            useremail: data.email,
-            phone: data.phone,
-            message: data.message,
-            organization_name: 'Kindly Hub',
-            organization_email: `kindlyhub4@gmail.com`
+            subject: emailSubject,
+            username: `${parsed.data.firstName} ${parsed.data.lastName}`,
+            useremail: parsed.data.email,
+            phone: parsed.data.phone,
+            message: parsed.data.message,
         });
 
-        // const { error } = await resend.emails.send({
-        //     from: 'Kindly Hub <team@email.kindlyhub.org>',
-        //     to: 'kindlyhub4@gmail.com',
-        //     subject: subject,
-        //     html: emailBody
-        // });
+        const { error } = await resend.emails.send({
+            from: 'Kindly Hub <onboarding@resend.dev>',
+            to: process.env.CONTACT_TO_EMAIL!,
+            subject: subject,
+            html: emailBody,
+            replyTo: parsed.data.email
+        });
 
 
-        // if (error) {
-        //     console.log(error);
-        //     return {
-        //         status: 'error',
-        //         error: 'An unexpected error occured while sending your message to Kindly Hub.'
-        //     }
-        // }
+        if (error) {
+            console.error(error);
+            return {
+                status: 'error',
+                error: 'An unexpected error occured while sending your message to Kindly Hub.'
+            }
+        }
 
         return {
             status: 'success',
