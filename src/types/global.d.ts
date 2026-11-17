@@ -16,7 +16,7 @@ type SuccessStoryType = {
     $updatedAt: string;
     $sequence: string;
     $databaseId: string;
-    $collectionId: string;
+    $tableId: string;
 }
 
 type NewsReleaseType = {
@@ -24,35 +24,15 @@ type NewsReleaseType = {
     summary: string;
     content: string;
     image: string;
+    imageId: string;
     date: string;
-    featured: boolean;
-    fileId?: string;
     $id: string;
     $permissions: string[];
     $createdAt: string;
     $updatedAt: string;
     $sequence: string;
     $databaseId: string;
-    $collectionId: string;
-}
-
-type FileType = {
-  $id: string;
-  bucketId: string;
-  $createdAt: string;
-  $updatedAt: string;
-  $permissions: string[];
-  name: string;
-  signature: string;
-  mimeType: 'image/png';
-  sizeOriginal: number;
-  chunksTotal: number;
-  chunksUploaded: number;
-}
-
-type NewsReturnType = {
-    documents: NewsReleaseType[];
-    images: FileType[];
+    $tableId: string;
 }
 
 type NewsItem = Pick<NewsReleaseType, '$id' | 'title' | 'summary' | 'content' | 'image' | 'date'>

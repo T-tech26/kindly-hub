@@ -3,7 +3,6 @@
 import { newsFeed } from "@/data/fallbackNews";
 import { stories } from "@/data/fallbackStories";
 import { getAllNesRelease, getAllSuccessStories } from "@/lib/action";
-import { addNewsFeatureImage } from "@/lib/utils";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 type DataContextType = {
@@ -23,8 +22,8 @@ export const useDataContext = () => {
 
 export const DataProvider = ({ children }: { children: React.ReactNode }) => {
 
-  const [successStories, setSuccessStories] = useState<SuccessStoryType[] | StoryItem[]>([]);
-  const [news, setNews] = useState<NewsReleaseType[] | NewsItem[]>([]);
+  const [successStories, setSuccessStories] = useState<StoryItem[]>([]);
+  const [news, setNews] = useState<NewsItem[]>([]);
   
 
   useEffect(() => {
@@ -46,14 +45,12 @@ export const DataProvider = ({ children }: { children: React.ReactNode }) => {
       try{
         const data = await getAllNesRelease();
 
-        if(!data.documents.length || !data.documents) {
+        if(!data.length || !data) {
           setNews(newsFeed);
           return;
         }
-        
-        const newsWithImageUrl = addNewsFeatureImage(data.documents, data.images);
   
-        setNews(newsWithImageUrl);
+        setNews(data);
       } catch {
         setNews(newsFeed);
       }

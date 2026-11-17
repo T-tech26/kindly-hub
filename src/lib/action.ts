@@ -1,32 +1,32 @@
 'use server'
 
-import { ID, Query } from "node-appwrite";
+import { Query } from "node-appwrite";
 import { createAdminClient } from "./appwrite/config";
 import * as handlebars from 'handlebars'
 import { ContactFormData } from "@/components/ContactSection";
 import { ContactEmail } from "./email/template";
 import { Resend } from "resend";
+import { parseStringify } from "./utils";
 
 
-const resend = new Resend(process.env.RESEND_API_KEY!);
+// const resend = new Resend(process.env.RESEND_API_KEY!);
 
 
 export const getAllSuccessStories = async (): Promise<SuccessStoryType[]> => {
     try {
-        const { database } = await createAdminClient();
+        const { tableDB } = await createAdminClient();
 
-        const successStories = await database.listDocuments(
-            process.env.APPWRITE_DATABASE_ID!,
-            process.env.APPWRITE_SUCCESS_STORY_COLLECTION_ID!,
-            [
+        const successStories = await tableDB.listRows({
+            databaseId: process.env.APPWRITE_DATABASE_ID!,
+            tableId: process.env.APPWRITE_SUCCESS_STORY_COLLECTION_ID!,
+            queries: [
                 Query.orderDesc('$createdAt'),
                 Query.limit(3)
             ]
-        );
+        });
 
-        const stories = successStories.documents as SuccessStoryType[];
+        return parseStringify(successStories.rows);
 
-        return stories;
     } catch (error) {
         console.error('Error fetching success stories:', error);
         return [];
@@ -34,34 +34,29 @@ export const getAllSuccessStories = async (): Promise<SuccessStoryType[]> => {
 }
 
 
-export const getAllNesRelease = async (): Promise<NewsReturnType> => {
+export const getAllNesRelease = async (): Promise<NewsReleaseType[]> => {
     try {
-        const { database, storage } = await createAdminClient();
+        const { tableDB } = await createAdminClient();
 
-        const news = await database.listDocuments(
-            process.env.APPWRITE_DATABASE_ID!,
-            process.env.APPWRITE_NEWS_COLLECTION_ID!,
-            [Query.orderDesc('$createdAt')]
-        );
+        const news = await tableDB.listRows({
+            databaseId: process.env.APPWRITE_DATABASE_ID!,
+            tableId: process.env.APPWRITE_NEWS_COLLECTION_ID!,
+            queries: [
+                Query.orderDesc('$createdAt'),
+                Query.limit(3)
+            ]
+        });
 
-        const images = await storage.listFiles(
-            process.env.APPWRITE_IMAGE_BUCKET_ID!,
-        );
-
-        const newsType = news.documents as NewsReleaseType[];
-        const imageType = images.files as FileType[];
-
-        return {
-            documents: newsType,
-            images: imageType
-        }
+        const newsFeed = news.rows.map(news => ({
+            ...news,
+            image: `${process.env.NEXT_PUBLIC_APPWRITE_PUBLIC_URL}/storage/buckets/${process.env.NEXT_PUBLIC_APPWRITE_IMAGE_BUCKET_ID}/files/${news.imageId}/view?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID}&mode=admin`
+        }))
+        
+        return parseStringify(newsFeed);
         
     } catch (error) {
         console.error('Error fetching all news releases:', error);
-        return {
-            documents: [],
-            images: []
-        }
+        return [];
     }
 }
 
@@ -85,21 +80,21 @@ export const contactEmail = async (data: ContactFormData): Promise<ResponseStatu
             organization_email: `kindlyhub4@gmail.com`
         });
 
-        const { error } = await resend.emails.send({
-            from: 'Kindly Hub <team@email.kindlyhub.org>',
-            to: 'kindlyhub4@gmail.com',
-            subject: subject,
-            html: emailBody
-        });
+        // const { error } = await resend.emails.send({
+        //     from: 'Kindly Hub <team@email.kindlyhub.org>',
+        //     to: 'kindlyhub4@gmail.com',
+        //     subject: subject,
+        //     html: emailBody
+        // });
 
 
-        if (error) {
-            console.log(error);
-            return {
-                status: 'error',
-                error: 'An unexpected error occured while sending your message to Kindly Hub.'
-            }
-        }
+        // if (error) {
+        //     console.log(error);
+        //     return {
+        //         status: 'error',
+        //         error: 'An unexpected error occured while sending your message to Kindly Hub.'
+        //     }
+        // }
 
         return {
             status: 'success',

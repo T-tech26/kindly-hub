@@ -1,26 +1,6 @@
 import { format, formatDistanceToNowStrict, differenceInHours, parseISO } from 'date-fns';
 
 
-export const addNewsFeatureImage = (
-    documents: NewsReleaseType[],
-    images: FileType[]
-) => {
-    return documents.map(news => {
-        const newsImage = images.find(file => file.name === news.image);
-
-        const imageUrl = newsImage 
-            ? `${process.env.NEXT_PUBLIC_APPWRITE_PUBLIC_URL}/storage/buckets/${newsImage.bucketId}/files/${newsImage.$id}/view?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID}&mode=admin`
-            : news.image;
-
-        return {
-            ...news,
-            image: imageUrl,
-            fileId: newsImage?.$id
-        }
-    });
-}
-
-
 export const getSmartDateDisplay = (dateString: string) => {
   const date = parseISO(dateString);
   const now = new Date();
@@ -38,3 +18,8 @@ export const getSmartDateDisplay = (dateString: string) => {
     return format(date, 'yyyy-MM-dd');
   }
 }
+
+
+// /* eslint-disable @typescript-eslint/no-explicit-any */
+export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));
+// /* eslint-enable @typescript-eslint/no-explicit-any */
