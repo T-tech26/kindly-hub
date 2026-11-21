@@ -1,5 +1,3 @@
-"use server"
-
 import { cookies } from "next/headers";
 import { config, adminConfig } from '@/config/config'
 import { Client, Account, TablesDB, Users, Storage } from "node-appwrite"
